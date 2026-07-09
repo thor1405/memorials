@@ -28,89 +28,30 @@ export function initInteractions() {
 
   if (form && submitBtn) {
     form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
       const nameInput = document.getElementById('full-name');
       const phoneInput = document.getElementById('phone');
       const emailInput = document.getElementById('email');
       const serviceType = document.getElementById('service-type');
-      const branchInput = document.getElementById('branch-select');
-      const notesInput = document.getElementById('notes');
 
       if (!nameInput?.value.trim() || !phoneInput?.value.trim() || !emailInput?.value.trim()) {
+        e.preventDefault();
         showToast('Please provide your full name, phone number, and email address.');
-        return;
+        return false;
       }
 
       if (!serviceType || !serviceType.value) {
+        e.preventDefault();
         showToast('Please select a service from the dropdown list.');
-        return;
+        return false;
       }
 
-      const originalText = submitBtn.innerHTML;
+      // Visual feedback while native form POST redirects to FormSubmit.co
       submitBtn.classList.add('skeleton-shimmer');
       submitBtn.innerHTML = `<span>Dispatching to Specialist...</span>`;
-      submitBtn.disabled = true;
-
-      const formData = {
-        _subject: `New Coffin Inquiry (${serviceType.value}) - ${nameInput.value}`,
-        "Full Name": nameInput.value,
-        "Phone Number": phoneInput.value,
-        "Email": emailInput.value,
-        "Service": serviceType.value,
-        "Location Branch": branchInput ? branchInput.value : "Goa Location (+91 9226577403)",
-        "Notes": notesInput ? notesInput.value : "No notes provided"
-      };
-
-      const mailtoLink = `mailto:johancolaco100@gmail.com?subject=${encodeURIComponent(formData._subject)}&body=${encodeURIComponent(`Name: ${formData["Full Name"]}\nPhone: ${formData["Phone Number"]}\nEmail: ${formData.Email}\nService: ${formData.Service}\nBranch: ${formData["Location Branch"]}\nNotes: ${formData.Notes}`)}`;
-
-      // 1. Attempt FormSubmit AJAX delivery
-      fetch('https://formsubmit.co/ajax/johancolaco100@gmail.com', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      })
-      .then(response => response.json())
-      .then(data => {
-        if (data && (data.success === "false" || data.message?.includes("activate"))) {
-          // If first-time activation is needed, perform a direct HTML form submit so FormSubmit sends the activation email to johancolaco100@gmail.com
-          console.warn("FormSubmit requires activation redirect. Submitting form directly...");
-          form.submit();
-          return;
-        }
-        showToast(`Thank you, ${nameInput.value}! Your inquiry has been dispatched to johancolaco100@gmail.com (+91 9226577403). Our specialist will reach out to you shortly.`);
-        
-        // Open direct email draft as an immediate secondary confirmation
-        setTimeout(() => {
-          window.location.href = mailtoLink;
-        }, 800);
-      })
-      .catch(err => {
-        console.error("FormSubmit AJAX Note:", err);
-        // Fallback: direct form submit if AJAX is blocked across tunnel/localhost
-        form.submit();
-      })
-      .finally(() => {
-        submitBtn.classList.remove('skeleton-shimmer');
-        submitBtn.innerHTML = `
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>
-          <span>Inquiry Sent to Specialist</span>
-        `;
-        submitBtn.style.background = 'var(--accent-gold-light)';
-
-        setTimeout(() => {
-          if (form) form.reset();
-        }, 2000);
-
-        setTimeout(() => {
-          submitBtn.innerHTML = originalText;
-          submitBtn.style.background = '';
-          submitBtn.disabled = false;
-        }, 5000);
-      });
+      
+      showToast(`Thank you, ${nameInput.value}! Dispatching inquiry directly to johancolaco100@gmail.com...`);
+      // Allow native HTML POST to formsubmit.co to proceed without e.preventDefault()
+      return true;
     });
   }
 
