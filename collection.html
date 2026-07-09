@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coffin Collection | Gomes Funeral Service • Goa, India</title>
+  <meta name="description" content="Inspect luxury handcrafted Christian coffins and caskets by Gomes Funeral Service. Solid American Oak, Brazilian Rosewood, and Ethereal White Marble models with 360 degree interactive viewer." />
+  <link rel="stylesheet" href="/styles/main.css" />
+</head>
+<body style="background: var(--bg-primary);">
+  <!-- Ambient Cross Background Video Animation -->
+  <video class="ambient-video-bg" autoplay loop muted playsinline>
+    <source src="/assets/cross2.mp4" type="video/mp4" />
+  </video>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar" style="position: sticky; top: 0; background: var(--bg-glass-heavy);">
+    <a href="/index.html" class="nav-brand">
+      <svg class="nav-brand-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2v20M7 7h10"/>
+      </svg>
+      <span>Gomes Funeral Service</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/index.html" class="nav-link">Overview</a></li>
+      <li><a href="/services.html" class="nav-link">Our Services</a></li>
+      <li><a href="/collection.html" class="nav-link active">Coffin Collection</a></li>
+      <li><a href="/craftsmanship.html" class="nav-link">Craftsmanship</a></li>
+      <li><a href="/locations.html" class="nav-link">Locations</a></li>
+    </ul>
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <a href="/inquire.html" class="nav-cta">
+        <span>Inquire & Order</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Header Banner -->
+  <header style="padding: 100px 5% 60px; text-align: center; background: radial-gradient(circle at center, rgba(212, 175, 55, 0.12) 0%, transparent 80%); border-bottom: 1px solid var(--border-glass);">
+    <div style="max-width: 800px; margin: 0 auto;">
+      <span class="section-tag" style="margin-bottom: 16px;">The Gomes Collection</span>
+      <h1 style="font-family: var(--font-serif); font-size: clamp(2.6rem, 5vw, 4rem); color: var(--text-primary); margin-bottom: 24px;">Handcrafted Christian Coffins</h1>
+      <p style="color: var(--text-secondary); font-size: 1.1rem; line-height: 1.7;">
+        Each coffin in our collection is sculpted by master artisans using sustainably sourced hardwoods, solid bronzes, and ethereal marbles, designed to honor a lifetime of faith with eternal elegance.
+      </p>
+    </div>
+  </header>
+
+  <!-- Coffin & Casket Showcase Section -->
+  <main class="showcase-section" style="padding: 80px 5% 120px;">
+    <div class="showcase-grid">
+      <!-- Card 1: The Sovereign Oak -->
+      <article class="casket-card">
+        <div class="casket-badge">Solid Heritage Goan Oak & Teak</div>
+        <div class="casket-image-wrapper">
+          <img src="/assets/casket_oak.png" alt="The Sovereign Oak Coffin" class="casket-image" />
+        </div>
+        <div class="casket-info">
+          <h3>The Sovereign Oak</h3>
+          <p>Handcrafted heritage Goan oak and teak coffin featuring brushed bronze swing bars, subtle cross relief joinery, and a tailored white velvet interior.</p>
+        </div>
+        <div class="casket-footer" style="justify-content: flex-end;">
+          <button class="btn-inspect">Inspect 3D Details</button>
+        </div>
+      </article>
+
+      <!-- Card 2: The Celestial Rosewood (Featured with Professional Photo) -->
+      <article class="casket-card">
+        <div class="casket-badge">Masterpiece Goan Rosewood</div>
+        <div class="casket-image-wrapper">
+          <img src="/assets/professional_rosewood_coffin.png" alt="The Celestial Rosewood Coffin With Polished Finish" class="casket-image" />
+        </div>
+        <div class="casket-info">
+          <h3>The Celestial Rosewood</h3>
+          <p>Deep polished Goan rosewood and hardwood coffin with hand-engraved Christian symbolism, champagne crepe lining, and adjustable resting elevation.</p>
+        </div>
+        <div class="casket-footer" style="justify-content: flex-end;">
+          <button class="btn-inspect">Inspect 3D Details</button>
+        </div>
+      </article>
+
+      <!-- Card 3: The Divine White Marble -->
+      <article class="casket-card">
+        <div class="casket-badge">Ethereal Marble Composite</div>
+        <div class="casket-image-wrapper">
+          <img src="/assets/casket_marble.png" alt="The Divine White Marble Coffin" class="casket-image" />
+        </div>
+        <div class="casket-info">
+          <h3>The Divine White Marble</h3>
+          <p>A minimalist luxury coffin composite of cultured white marble and brushed stainless steel accents, radiating serenity and eternal strength.</p>
+        </div>
+        <div class="casket-footer" style="justify-content: flex-end;">
+          <button class="btn-inspect">Inspect 3D Details</button>
+        </div>
+      </article>
+    </div>
+
+    <!-- 360 Interactive Viewer Box -->
+    <div class="interactive-viewer-box" style="margin-bottom: 80px;">
+      <h3 class="viewer-title">Interactive 360° Coffin Viewer</h3>
+      <p class="viewer-subtitle">Drag the slider below to smoothly inspect the craftsmanship, handles, and angles of our featured Christian coffins.</p>
+      
+      <div class="viewer-stage" id="viewer-stage">
+        <img src="/assets/professional_rosewood_coffin.png" alt="360 Coffin Viewer" class="viewer-img" id="viewer-img" />
+      </div>
+
+      <div class="viewer-slider-wrapper">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--text-secondary);"><path d="M2 12h20"/><path d="m6 8-4 4 4 4"/><path d="m18 8 4 4-4 4"/></svg>
+        <input type="range" id="casket-rotator" min="1" max="36" value="18" class="viewer-slider" aria-label="Rotate coffin view" />
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--accent-gold);"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
+      </div>
+    </div>
+
+    <!-- Bottom CTA to book or order -->
+    <div style="text-align: center; padding: 40px; background: var(--bg-surface); border: 1px solid var(--border-gold); border-radius: var(--radius-xl); max-width: 700px; margin-left: auto; margin-right: auto;">
+      <h3 style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--text-primary); margin-bottom: 12px;">Found the Perfect Resting Place?</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 1rem;">Reach out and contact our coffin specialists directly or request immediate white-glove sanctuary delivery across Goa.</p>
+      <a href="/inquire.html" class="btn-primary" style="display: inline-flex; width: auto;">
+        <span>Order & Custom Inquiry</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </a>
+    </div>
+  </main>
+
+  <!-- Interactive 3D / 360° Inspection Suite Modal -->
+  <div id="zoom-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-content" style="max-width: 900px; padding: 44px 36px; text-align: left;">
+      <button class="modal-close-btn" id="modal-close" aria-label="Close dialog">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; margin-bottom: 24px; gap: 16px; border-bottom: 1px solid var(--border-glass); padding-bottom: 16px;">
+        <div>
+          <span class="section-tag" style="margin-bottom: 6px; display: inline-block;">3D Precision Inspection Suite</span>
+          <h3 id="modal-title" style="font-family: var(--font-serif); font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--text-primary); margin: 0;">The Sovereign Oak Coffin</h3>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 0.8rem; color: var(--accent-gold); border: 1px solid var(--border-gold); padding: 4px 12px; border-radius: var(--radius-full); background: rgba(212, 175, 55, 0.1);">Interactive 360° • Mouse Drag Enabled</span>
+        </div>
+      </div>
+
+      <!-- 3D Inspection Stage -->
+      <div class="viewer-stage" id="modal-stage" style="height: 380px; margin-bottom: 20px; cursor: grab; user-select: none;">
+        <img src="" alt="3D Coffin Inspection View" id="modal-img" class="viewer-img" style="max-height: 90%; transition: transform 0.15s ease-out, filter 0.15s ease-out;" />
+      </div>
+
+      <!-- 360 Rotation Scrubber inside Modal -->
+      <div class="viewer-slider-wrapper" style="margin-bottom: 28px; max-width: 600px;">
+        <span style="font-size: 0.8rem; color: var(--text-secondary); white-space: nowrap;">Rotate 360°:</span>
+        <input type="range" id="modal-rotator" min="-30" max="30" value="0" class="viewer-slider" aria-label="Rotate 3D coffin view in modal" />
+        <span id="modal-angle-label" style="font-size: 0.8rem; color: var(--accent-gold); width: 45px; text-align: right; font-family: monospace;">0°</span>
+      </div>
+
+      <!-- 3D Detail Hotspot Buttons -->
+      <div style="margin-bottom: 24px;">
+        <div style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px;">Select Architectural Spec to Inspect In 3D:</div>
+        <div class="modal-hotspot-tabs" id="modal-hotspot-tabs" style="display: flex; flex-wrap: wrap; gap: 10px;">
+          <button class="hotspot-tab active" data-spec="hardware" data-angle="-15" data-zoom="1.15">✨ Solid Bronze Hardware & Swing Bars</button>
+          <button class="hotspot-tab" data-spec="joinery" data-angle="15" data-zoom="1.12">🪵 Hand-Carved Cross Relief Joinery</button>
+          <button class="hotspot-tab" data-spec="interior" data-angle="0" data-zoom="1.18">👑 Tailored Velvet Sanctuary Interior</button>
+          <button class="hotspot-tab" data-spec="seal" data-angle="-25" data-zoom="1.1">🔒 Air-Tight Eternal Protective Seal</button>
+        </div>
+      </div>
+
+      <!-- Spec Details Card -->
+      <div id="modal-spec-desc" style="background: var(--bg-primary); border: 1px solid var(--border-glass); border-radius: var(--radius-lg); padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+        <div style="flex: 1; min-width: 250px;">
+          <h4 id="spec-title" style="color: var(--accent-gold); font-family: var(--font-serif); font-size: 1.15rem; margin-bottom: 6px;">Solid Bronze Hardware & Swing Bars</h4>
+          <p id="spec-text" style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6; margin: 0;">Hand-brushed solid bronze swing handles tested for maximum structural integrity and dignified transport, treated with anti-tarnish protective coating.</p>
+        </div>
+        <a href="/inquire.html" class="btn-primary" style="padding: 12px 24px; font-size: 0.9rem; white-space: nowrap;">Inquire & Order →</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer style="background: var(--bg-secondary); padding: 40px 5%; text-align: center; border-top: 1px solid var(--border-glass); color: var(--text-muted); font-size: 0.85rem;">
+    <p style="margin-bottom: 8px;">© 2026 Gomes Funeral Service • Aquem Baixo & Sao Jose De Areal, Goa. Certified Christian Caskets & Comprehensive Services.</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;">24/7 Helpline: <a href="tel:+919226577403" style="color: var(--accent-gold); text-decoration: none; font-weight: 600;">+91 9226577403</a> • Email: <a href="mailto:rg6038145@gmail.com" style="color: var(--accent-gold); text-decoration: none; font-weight: 600;">rg6038145@gmail.com</a></p>
+  </footer>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

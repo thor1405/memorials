@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gomes Funeral Service | Luxury Christian Coffins & Caskets</title>
+  <meta name="description" content="An award-winning, premium Christian coffin and casket showcase by Gomes Funeral Service. Handcrafted hardwood, rosewood, and marble coffins with locations in Aquem Baixo and Sao Jose De Areal, Goa, India." />
+  <link rel="stylesheet" href="/styles/main.css" />
+</head>
+<body>
+  <!-- Ambient Cross Background Video Animation -->
+  <video class="ambient-video-bg" autoplay loop muted playsinline>
+    <source src="/assets/cross2.mp4" type="video/mp4" />
+  </video>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loader-logo">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-gold);">
+        <path d="M12 2v20M7 7h10"/>
+      </svg>
+    </div>
+    <div class="loader-text">Gomes Funeral Service</div>
+  </div>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scroll-progress"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <a href="/index.html" class="nav-brand">
+      <svg class="nav-brand-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2v20M7 7h10"/>
+      </svg>
+      <span>Gomes Funeral Service</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/index.html" class="nav-link active">Overview</a></li>
+      <li><a href="/services.html" class="nav-link">Our Services</a></li>
+      <li><a href="/collection.html" class="nav-link">Coffin Collection</a></li>
+      <li><a href="/craftsmanship.html" class="nav-link">Craftsmanship</a></li>
+      <li><a href="/locations.html" class="nav-link">Locations</a></li>
+    </ul>
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <a href="/inquire.html" class="nav-cta">
+        <span>Inquire & Order</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-section" id="hero">
+    <div class="hero-bg-wrapper">
+      <img src="/assets/sanctuary_service.jpg" alt="Gomes Funeral Service Sanctuary Background" class="hero-bg-image" id="hero-bg" />
+      <div class="hero-gradient-overlay"></div>
+    </div>
+    
+    <div class="light-ray"></div>
+    <div class="light-ray light-ray-2"></div>
+    <canvas id="particle-canvas"></canvas>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>Handcrafted Christian Coffins & Caskets • Goa</span>
+      </div>
+      <h1 class="hero-title">
+        Masterpiece Christian Coffins With <span>Eternal Elegance</span>
+      </h1>
+      <p class="hero-subtitle">
+        Welcome to Gomes Funeral Service. We specialize exclusively in meticulously handcrafted Christian coffins and caskets—blending sacred reverence with state-of-the-art woodworking and luxury materials across our Aquem Baixo and Sao Jose De Areal locations in Goa.
+      </p>
+      <div class="hero-actions">
+        <a href="/collection.html" class="btn-primary">
+          <span>Explore Coffin Collection</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </a>
+        <a href="/locations.html" class="btn-secondary">
+          <span>Location Maps</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Scripture Parallax Section -->
+  <section class="scripture-section" id="scripture">
+    <div class="scripture-candle-glow"></div>
+    <div class="scripture-quote-container">
+      <blockquote class="scripture-text" id="quote-1">
+        <span class="scripture-word">"I</span>
+        <span class="scripture-word">am</span>
+        <span class="scripture-word">the</span>
+        <span class="scripture-word">resurrection</span>
+        <span class="scripture-word">and</span>
+        <span class="scripture-word">the</span>
+        <span class="scripture-word">life.</span>
+        <span class="scripture-word">The</span>
+        <span class="scripture-word">one</span>
+        <span class="scripture-word">who</span>
+        <span class="scripture-word">believes</span>
+        <span class="scripture-word">in</span>
+        <span class="scripture-word">me</span>
+        <span class="scripture-word">will</span>
+        <span class="scripture-word">live,</span>
+        <span class="scripture-word">even</span>
+        <span class="scripture-word">though</span>
+        <span class="scripture-word">they</span>
+        <span class="scripture-word">die."</span>
+      </blockquote>
+      <div class="scripture-ref" id="quote-1-ref">— John 11:25</div>
+    </div>
+  </section>
+
+  <!-- Multi-page Overview Section -->
+  <section class="showcase-section" style="padding: 120px 5% 140px;">
+    <div class="section-header">
+      <span class="section-tag">Explore Gomes Funeral Service</span>
+      <h2 class="section-title">Dedicated Care Across Every Detail</h2>
+      <p class="section-desc">
+        We have organized our online experience into dedicated pages to help your family explore our luxury coffin models, comprehensive services, craftsmanship standards, and Goa locations with complete peace of mind.
+      </p>
+    </div>
+
+    <div class="showcase-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 32px;">
+      
+      <!-- Card 1: Our Services -->
+      <article class="casket-card" style="padding: 36px 32px; justify-content: space-between;">
+        <div>
+          <span style="font-size: 0.75rem; color: var(--accent-gold); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 12px;">Dignified Memorial Services</span>
+          <h3 style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-primary); margin-bottom: 14px;">Our Services</h3>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px;">
+            Explore our comprehensive services, including embalming & dressing, funeral attire & accessories, coffin selection, luxury hearse vans & mobile morgue, floral arrangements, and catering contacts.
+          </p>
+        </div>
+        <a href="/services.html" class="btn-inspect" style="text-decoration: none; text-align: center; display: block;">View All Services →</a>
+      </article>
+
+      <!-- Card 2: Coffin Collection -->
+      <article class="casket-card" style="padding: 36px 32px; justify-content: space-between;">
+        <div>
+          <span style="font-size: 0.75rem; color: var(--accent-gold); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 12px;">Handcrafted Caskets</span>
+          <h3 style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-primary); margin-bottom: 14px;">Coffin Collection</h3>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px;">
+            Inspect our master hardwood, rosewood, and white marble caskets. Experience our interactive 360° viewer and detailed dimensional specifications.
+          </p>
+        </div>
+        <a href="/collection.html" class="btn-inspect" style="text-decoration: none; text-align: center; display: block;">Browse Collection →</a>
+      </article>
+
+      <!-- Card 3: Craftsmanship -->
+      <article class="casket-card" style="padding: 36px 32px; justify-content: space-between;">
+        <div>
+          <span style="font-size: 0.75rem; color: var(--accent-gold); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 12px;">Artisan Woodworking</span>
+          <h3 style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-primary); margin-bottom: 14px;">Craftsmanship</h3>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px;">
+            Learn about our sustainable timber harvesting, tailored velvet interiors, solid bronze swing bars, and express white-glove delivery across Goa.
+          </p>
+        </div>
+        <a href="/craftsmanship.html" class="btn-inspect" style="text-decoration: none; text-align: center; display: block;">Our Process →</a>
+      </article>
+
+      <!-- Card 4: Locations -->
+      <article class="casket-card" style="padding: 36px 32px; justify-content: space-between;">
+        <div>
+          <span style="font-size: 0.75rem; color: var(--accent-gold); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 12px;">Visit Us in Goa</span>
+          <h3 style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-primary); margin-bottom: 14px;">Goa Locations</h3>
+          <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px;">
+            Find interactive Google Maps and coordinates for our Primary Location in Aquem Baixo and our Artisan Workshop in Sao Jose De Areal, Goa.
+          </p>
+        </div>
+        <a href="/locations.html" class="btn-inspect" style="text-decoration: none; text-align: center; display: block;">View Maps & Directions →</a>
+      </article>
+
+      <!-- Card 5: Sanctuary Memorial Packages -->
+      <article class="casket-card" style="padding: 36px 32px; justify-content: space-between; grid-column: 1 / -1; background: linear-gradient(145deg, rgba(212, 175, 55, 0.07) 0%, rgba(18, 18, 18, 0.95) 100%); border: 1px solid var(--accent-gold);">
+        <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px;">
+          <div style="flex: 1; min-width: 280px;">
+            <span style="font-size: 0.75rem; color: var(--accent-gold); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 12px;">All-Inclusive Christian Tiers</span>
+            <h3 style="font-family: var(--font-serif); font-size: 1.8rem; color: var(--text-primary); margin-bottom: 14px;">Sanctuary Memorial Packages</h3>
+            <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 0;">
+              Explore our three thoughtfully curated packages: <strong style="color: var(--text-primary);">Haven of Serenity (Essential Care)</strong>, <strong style="color: var(--text-primary);">Tribute of Respect (Graceful Farewell)</strong>, and <strong style="color: var(--text-primary);">Everlasting Farewell (Legacy Celebration)</strong>—complete with hearse transport, coffin selection, church coordination, and 24/7 liaison.
+            </p>
+          </div>
+          <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+            <a href="/services.html#packages" class="btn-primary" style="text-decoration: none; padding: 14px 32px; white-space: nowrap;">Inspect All 3 Packages →</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <!-- Bottom Banner CTA -->
+    <div style="text-align: center; margin-top: 60px; padding: 50px 30px; background: var(--bg-surface); border: 1px solid var(--border-gold); border-radius: var(--radius-xl); max-width: 800px; margin-left: auto; margin-right: auto; box-shadow: var(--shadow-lg);">
+      <h3 style="font-family: var(--font-serif); font-size: 2rem; color: var(--text-primary); margin-bottom: 16px;">Ready to Reach Out & Contact Us?</h3>
+      <p style="color: var(--text-secondary); margin-bottom: 30px; font-size: 1.05rem;">Our team is available 24 hours a day, 7 days a week to assist with urgent deliveries, custom sizing, and material consultation.</p>
+      <a href="/inquire.html" class="btn-primary" style="display: inline-flex; width: auto; padding: 16px 44px;">
+        <span>Inquire & Order Now</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background: var(--bg-secondary); padding: 40px 5%; text-align: center; border-top: 1px solid var(--border-glass); color: var(--text-muted); font-size: 0.85rem;">
+    <p style="margin-bottom: 8px;">© 2026 Gomes Funeral Service • Aquem Baixo & Sao Jose De Areal, Goa. Certified Christian Caskets & Comprehensive Services.</p>
+    <p style="color: var(--text-secondary); font-size: 0.85rem;">24/7 Helpline: <a href="tel:+919226577403" style="color: var(--accent-gold); text-decoration: none; font-weight: 600;">+91 9226577403</a> • Email: <a href="mailto:rg6038145@gmail.com" style="color: var(--accent-gold); text-decoration: none; font-weight: 600;">rg6038145@gmail.com</a></p>
+  </footer>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>
