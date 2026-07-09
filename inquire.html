@@ -29,6 +29,7 @@
       <li><a href="/locations.html" class="nav-link">Locations</a></li>
     </ul>
     <div style="display: flex; align-items: center; gap: 16px;">
+      <button class="theme-toggle-btn" id="theme-toggle-btn" aria-label="Switch Theme"></button>
       <a href="/inquire.html" class="nav-cta" style="background: var(--accent-gold); color: #fff;">
         <span>Inquire & Order</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
@@ -143,10 +144,92 @@
   <!-- Toast Notification Container -->
   <div id="toast-container"></div>
 
-  <!-- Footer -->
-  <footer style="background: var(--bg-secondary); padding: 40px 5%; text-align: center; border-top: 1px solid var(--border-glass); color: var(--text-muted); font-size: 0.85rem;">
-    <p style="margin-bottom: 8px;">© 2026 Gomes Funeral Service • Aquem Baixo & Sao Jose De Areal, Goa. Certified Christian Caskets & Comprehensive Services.</p>
-    <p style="color: var(--text-secondary); font-size: 0.85rem;">24/7 Helpline: <a href="tel:+919226577403" style="color: var(--accent-gold); text-decoration: none; font-weight: 600;">+91 9226577403</a> • Email: <a href="mailto:rg6038145@gmail.com" style="color: var(--accent-gold); text-decoration: none; font-weight: 600;">rg6038145@gmail.com</a></p>
+  <!-- Ultra-Premium Luxury Footer -->
+  <footer class="luxury-footer">
+    <div class="footer-top-glow"></div>
+    <div class="footer-container">
+      <div class="footer-grid">
+        <!-- Column 1: Brand & Sacred Mission -->
+        <div class="footer-col brand-col">
+          <a href="/index.html" class="footer-brand">
+            <svg class="footer-brand-icon" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2v20M7 7h10"/>
+            </svg>
+            <span>Gomes Funeral Service</span>
+          </a>
+          <p class="footer-desc">
+            Goa's premier sanctuary for certified Christian caskets, master woodworking, and comprehensive memorial care. Blending dignity, reverence, and timeless craftsmanship.
+          </p>
+          <div class="footer-badges">
+            <span class="footer-badge-pill">★ 24/7 Sanctuary Assistance</span>
+            <span class="footer-badge-pill">✓ Goan Heritage Quality</span>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Navigation -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Sanctuary Experience</h4>
+          <ul class="footer-links">
+            <li><a href="/index.html">Overview & Mission</a></li>
+            <li><a href="/services.html">Comprehensive Services</a></li>
+            <li><a href="/services.html#packages">Sanctuary Packages</a></li>
+            <li><a href="/collection.html">Coffin & Casket Collection</a></li>
+            <li><a href="/craftsmanship.html">Artisan Woodworking</a></li>
+            <li><a href="/locations.html">Goa Locations & Maps</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Christian Services -->
+        <div class="footer-col">
+          <h4 class="footer-heading">Our Services</h4>
+          <ul class="footer-links">
+            <li><a href="/inquire.html?service=Haven+of+Serenity">Essential Care Package</a></li>
+            <li><a href="/inquire.html?service=Tribute+of+Respect">Graceful Farewell Package</a></li>
+            <li><a href="/inquire.html?service=Everlasting+Farewell">Legacy Celebration Package</a></li>
+            <li><a href="/services.html">Mobile Morgue & Hearse Vans</a></li>
+            <li><a href="/services.html">Embalming & Funeral Attire</a></li>
+            <li><a href="/services.html">Choir & Floral Arrangements</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: 24/7 Direct Contact -->
+        <div class="footer-col contact-col">
+          <h4 class="footer-heading">Direct Contact & Support</h4>
+          <div class="footer-contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div>
+              <span class="footer-contact-label">24/7 Emergency Helpline</span>
+              <a href="tel:+919226577403" class="footer-contact-val">+91 9226577403</a>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <div>
+              <span class="footer-contact-label">Direct Inquiry Email</span>
+              <a href="mailto:rg6038145@gmail.com" class="footer-contact-val">rg6038145@gmail.com</a>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <span class="footer-contact-label">Primary Workshop & Sanctuary</span>
+              <span class="footer-contact-val-text">Aquem Baixo & Sao Jose De Areal, Goa</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <div class="footer-copyright">
+          © 2026 Gomes Funeral Service • Certified Christian Caskets & Comprehensive Services.
+        </div>
+        <div class="footer-developer">
+          <span>Designed & Developed with excellence by</span>
+          <strong class="developer-name">Johan</strong>
+        </div>
+      </div>
+    </div>
   </footer>
 
   <script type="module" src="/js/main.js"></script>
