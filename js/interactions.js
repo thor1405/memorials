@@ -27,11 +27,15 @@ export function initInteractions() {
   }
 
   if (form && submitBtn) {
-    submitBtn.addEventListener('click', () => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
       const nameInput = document.getElementById('full-name');
       const phoneInput = document.getElementById('phone');
       const emailInput = document.getElementById('email');
       const serviceType = document.getElementById('service-type');
+      const branchInput = document.getElementById('branch-select');
+      const notesInput = document.getElementById('notes');
 
       if (!nameInput?.value.trim() || !phoneInput?.value.trim() || !emailInput?.value.trim()) {
         showToast('Please provide your full name, phone number, and email address.');
@@ -43,14 +47,10 @@ export function initInteractions() {
         return;
       }
 
-      // Shimmer loading effect
       const originalText = submitBtn.innerHTML;
       submitBtn.classList.add('skeleton-shimmer');
       submitBtn.innerHTML = `<span>Dispatching to Specialist...</span>`;
       submitBtn.disabled = true;
-
-      const branchInput = document.getElementById('branch-select');
-      const notesInput = document.getElementById('notes');
 
       const formData = {
         _subject: `New Coffin Inquiry (${serviceType.value}) - ${nameInput.value}`,
@@ -62,7 +62,9 @@ export function initInteractions() {
         "Notes": notesInput ? notesInput.value : "No notes provided"
       };
 
-      // Send to FormSubmit endpoint for direct Gmail delivery to johancolaco100@gmail.com
+      const mailtoLink = `mailto:johancolaco100@gmail.com?subject=${encodeURIComponent(formData._subject)}&body=${encodeURIComponent(`Name: ${formData["Full Name"]}\nPhone: ${formData["Phone Number"]}\nEmail: ${formData.Email}\nService: ${formData.Service}\nBranch: ${formData["Location Branch"]}\nNotes: ${formData.Notes}`)}`;
+
+      // 1. Attempt FormSubmit AJAX delivery
       fetch('https://formsubmit.co/ajax/johancolaco100@gmail.com', {
         method: 'POST',
         headers: {
@@ -72,7 +74,25 @@ export function initInteractions() {
         body: JSON.stringify(formData)
       })
       .then(response => response.json())
-      .catch(err => console.error("FormSubmit AJAX Note:", err))
+      .then(data => {
+        if (data && (data.success === "false" || data.message?.includes("activate"))) {
+          // If first-time activation is needed, perform a direct HTML form submit so FormSubmit sends the activation email to johancolaco100@gmail.com
+          console.warn("FormSubmit requires activation redirect. Submitting form directly...");
+          form.submit();
+          return;
+        }
+        showToast(`Thank you, ${nameInput.value}! Your inquiry has been dispatched to johancolaco100@gmail.com (+91 9226577403). Our specialist will reach out to you shortly.`);
+        
+        // Open direct email draft as an immediate secondary confirmation
+        setTimeout(() => {
+          window.location.href = mailtoLink;
+        }, 800);
+      })
+      .catch(err => {
+        console.error("FormSubmit AJAX Note:", err);
+        // Fallback: direct form submit if AJAX is blocked across tunnel/localhost
+        form.submit();
+      })
       .finally(() => {
         submitBtn.classList.remove('skeleton-shimmer');
         submitBtn.innerHTML = `
@@ -81,15 +101,9 @@ export function initInteractions() {
         `;
         submitBtn.style.background = 'var(--accent-gold-light)';
 
-        showToast(`Thank you, ${nameInput.value}! Your inquiry has been dispatched to johancolaco100@gmail.com (+91 9226577403). Our specialist will reach out to you shortly.`);
-        
-        // Also trigger direct mailto fallback if browser blocks AJAX or for instant composition
-        const mailtoLink = `mailto:johancolaco100@gmail.com?subject=${encodeURIComponent(formData._subject)}&body=${encodeURIComponent(`Name: ${formData["Full Name"]}\nPhone: ${formData["Phone Number"]}\nEmail: ${formData.Email}\nService: ${formData.Service}\nBranch: ${formData["Location Branch"]}\nNotes: ${formData.Notes}`)}`;
-        
-        // Optional smooth trigger after toast
         setTimeout(() => {
           if (form) form.reset();
-        }, 1500);
+        }, 2000);
 
         setTimeout(() => {
           submitBtn.innerHTML = originalText;
