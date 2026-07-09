@@ -73,9 +73,9 @@ export function initInteractions() {
       const mailBody = `Hello Gomes Funeral Service,\n\nI would like to inquire regarding a consultation:\n\nClient Name: ${nameVal}\nPhone Number: ${phoneVal}\nEmail Address: ${emailVal}\nSelected Service/Package: ${serviceVal}\nPreferred Branch: ${branchVal}\nSpecial Requirements / Customization Notes:\n${notesVal}\n\nPlease reach out to me at your earliest convenience.\n\nThank you,\n${nameVal}`;
       
       if (emailBtn) {
-        emailBtn.href = `mailto:johancolaco100@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+        emailBtn.href = `mailto:rg6038145@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
         emailBtn.onclick = () => {
-          showToast(`Direct email opened! Send the draft to deliver straight to johancolaco100@gmail.com.`);
+          showToast(`Direct email opened! Send the draft to deliver straight to rg6038145@gmail.com.`);
         };
       }
 
