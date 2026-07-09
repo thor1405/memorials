@@ -28,30 +28,123 @@ export function initInteractions() {
 
   if (form && submitBtn) {
     form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
       const nameInput = document.getElementById('full-name');
       const phoneInput = document.getElementById('phone');
       const emailInput = document.getElementById('email');
       const serviceType = document.getElementById('service-type');
+      const branchInput = document.getElementById('branch-select');
+      const notesInput = document.getElementById('notes');
 
       if (!nameInput?.value.trim() || !phoneInput?.value.trim() || !emailInput?.value.trim()) {
-        e.preventDefault();
         showToast('Please provide your full name, phone number, and email address.');
         return false;
       }
 
       if (!serviceType || !serviceType.value) {
-        e.preventDefault();
         showToast('Please select a service from the dropdown list.');
         return false;
       }
 
-      // Visual feedback while native form POST redirects to FormSubmit.co
-      submitBtn.classList.add('skeleton-shimmer');
-      submitBtn.innerHTML = `<span>Dispatching to Specialist...</span>`;
+      const nameVal = nameInput.value;
+      const phoneVal = phoneInput.value;
+      const emailVal = emailInput.value;
+      const serviceVal = serviceType.value;
+      const branchVal = branchInput ? branchInput.value : "Aquem Baixo Location (+91 9226577403, Goa)";
+      const notesVal = notesInput ? notesInput.value : "No notes provided";
+
+      // 1. Populate Summary inside Modal
+      const summaryBox = document.getElementById('dispatch-summary');
+      if (summaryBox) {
+        summaryBox.innerHTML = `
+          <div class="dispatch-summary-row"><span class="dispatch-summary-label">Client Name:</span><span class="dispatch-summary-val">${nameVal}</span></div>
+          <div class="dispatch-summary-row"><span class="dispatch-summary-label">Phone Contact:</span><span class="dispatch-summary-val">${phoneVal}</span></div>
+          <div class="dispatch-summary-row"><span class="dispatch-summary-label">Email Address:</span><span class="dispatch-summary-val">${emailVal}</span></div>
+          <div class="dispatch-summary-row"><span class="dispatch-summary-label">Service Package:</span><span class="dispatch-summary-val" style="color: var(--accent-gold-light); font-weight: 600;">${serviceVal}</span></div>
+          <div class="dispatch-summary-row"><span class="dispatch-summary-label">Sanctuary Branch:</span><span class="dispatch-summary-val">${branchVal}</span></div>
+          <div class="dispatch-summary-row"><span class="dispatch-summary-label">Special Notes:</span><span class="dispatch-summary-val">${notesVal || 'None'}</span></div>
+        `;
+      }
+
+      // 2. Configure One-Click Direct Email Link
+      const emailBtn = document.getElementById('dispatch-email-btn');
+      const mailSubject = `New Coffin & Funeral Inquiry: ${serviceVal} - ${nameVal}`;
+      const mailBody = `Hello Gomes Funeral Service,\n\nI would like to inquire regarding a consultation:\n\nClient Name: ${nameVal}\nPhone Number: ${phoneVal}\nEmail Address: ${emailVal}\nSelected Service/Package: ${serviceVal}\nPreferred Branch: ${branchVal}\nSpecial Requirements / Customization Notes:\n${notesVal}\n\nPlease reach out to me at your earliest convenience.\n\nThank you,\n${nameVal}`;
       
-      showToast(`Thank you, ${nameInput.value}! Dispatching inquiry directly to johancolaco100@gmail.com...`);
-      // Allow native HTML POST to formsubmit.co to proceed without e.preventDefault()
-      return true;
+      if (emailBtn) {
+        emailBtn.href = `mailto:johancolaco100@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
+        emailBtn.onclick = () => {
+          showToast(`Direct email opened! Send the draft to deliver straight to johancolaco100@gmail.com.`);
+        };
+      }
+
+      // 3. Configure Instant WhatsApp Specialist Priority Link
+      const whatsappBtn = document.getElementById('dispatch-whatsapp-btn');
+      const waText = `*New Consultation Inquiry - Gomes Funeral Service*\n\n*Name:* ${nameVal}\n*Phone:* ${phoneVal}\n*Email:* ${emailVal}\n*Package/Service:* ${serviceVal}\n*Branch:* ${branchVal}\n*Notes:* ${notesVal || 'None'}`;
+      
+      if (whatsappBtn) {
+        whatsappBtn.href = `https://wa.me/919226577403?text=${encodeURIComponent(waText)}`;
+        whatsappBtn.onclick = () => {
+          showToast(`Opening WhatsApp Priority Dispatch with +91 9226577403...`);
+        };
+      }
+
+      // 4. Background Web3Forms API Attempt (If Access Key is set)
+      const web3Key = document.getElementById('web3forms-key');
+      if (web3Key && web3Key.value !== 'YOUR_WEB3FORMS_ACCESS_KEY') {
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            access_key: web3Key.value,
+            subject: mailSubject,
+            from_name: nameVal,
+            email: emailVal,
+            phone: phoneVal,
+            service: serviceVal,
+            branch: branchVal,
+            message: notesVal
+          })
+        }).catch(() => {});
+      }
+
+      // 5. Show the Dispatch Modal
+      const modal = document.getElementById('dispatch-modal');
+      if (modal) {
+        modal.style.display = 'flex';
+      }
+
+      // Button visual state
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = `<span>Inquiry Prepared</span>`;
+      submitBtn.style.background = 'var(--accent-gold-light)';
+      
+      setTimeout(() => {
+        submitBtn.innerHTML = originalText;
+        submitBtn.style.background = '';
+      }, 4000);
+    });
+  }
+
+  // Close Dispatch Modal logic
+  const dispatchModal = document.getElementById('dispatch-modal');
+  const closeDispatchBtn = document.getElementById('close-dispatch-modal');
+  if (closeDispatchBtn && dispatchModal) {
+    closeDispatchBtn.addEventListener('click', () => {
+      dispatchModal.style.display = 'none';
+      if (form) form.reset();
+    });
+  }
+  if (dispatchModal) {
+    dispatchModal.addEventListener('click', (e) => {
+      if (e.target === dispatchModal) {
+        dispatchModal.style.display = 'none';
+        if (form) form.reset();
+      }
     });
   }
 
