@@ -52,45 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 5. Theme Toggle Switcher (Light Mode & Dark Mode with LocalStorage Persistence)
-  function initThemeToggle() {
-    const themeToggleBtn = document.getElementById('theme-toggle-btn');
-    
-    let currentTheme = localStorage.getItem('gomes_theme') || 'dark';
-    document.documentElement.setAttribute('data-theme', currentTheme);
-
-    function updateBtnIcon(theme) {
-      if (!themeToggleBtn) return;
-      if (theme === 'light') {
-        // Show Moon icon to switch back to Dark Mode
-        themeToggleBtn.innerHTML = `
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" title="Switch to Dark Mode">
-            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
-          </svg>
-        `;
-        themeToggleBtn.setAttribute('aria-label', 'Switch to Dark Mode');
-      } else {
-        // Show Sun icon to switch to Light Mode
-        themeToggleBtn.innerHTML = `
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" title="Switch to Light Mode">
-            <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
-          </svg>
-        `;
-        themeToggleBtn.setAttribute('aria-label', 'Switch to Light Mode');
-      }
-    }
-
-    updateBtnIcon(currentTheme);
-
-    if (themeToggleBtn) {
-      themeToggleBtn.addEventListener('click', () => {
-        currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        document.documentElement.setAttribute('data-theme', currentTheme);
-        localStorage.setItem('gomes_theme', currentTheme);
-        updateBtnIcon(currentTheme);
-      });
-    }
-  }
-
-  initThemeToggle();
+  // 5. Enforce Divine Dark Mode Permanently
+  document.documentElement.setAttribute('data-theme', 'dark');
 });

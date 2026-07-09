@@ -62,8 +62,8 @@ export function initInteractions() {
         "Notes": notesInput ? notesInput.value : "No notes provided"
       };
 
-      // Send to FormSubmit endpoint for direct Gmail delivery to rg6038145@gmail.com
-      fetch('https://formsubmit.co/ajax/rg6038145@gmail.com', {
+      // Send to FormSubmit endpoint for direct Gmail delivery to johancolaco100@gmail.com
+      fetch('https://formsubmit.co/ajax/johancolaco100@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -81,10 +81,10 @@ export function initInteractions() {
         `;
         submitBtn.style.background = 'var(--accent-gold-light)';
 
-        showToast(`Thank you, ${nameInput.value}! Your inquiry has been dispatched to rg6038145@gmail.com (+91 9226577403). Our specialist will reach out to you shortly.`);
+        showToast(`Thank you, ${nameInput.value}! Your inquiry has been dispatched to johancolaco100@gmail.com (+91 9226577403). Our specialist will reach out to you shortly.`);
         
         // Also trigger direct mailto fallback if browser blocks AJAX or for instant composition
-        const mailtoLink = `mailto:rg6038145@gmail.com?subject=${encodeURIComponent(formData._subject)}&body=${encodeURIComponent(`Name: ${formData["Full Name"]}\nPhone: ${formData["Phone Number"]}\nEmail: ${formData.Email}\nService: ${formData.Service}\nBranch: ${formData["Location Branch"]}\nNotes: ${formData.Notes}`)}`;
+        const mailtoLink = `mailto:johancolaco100@gmail.com?subject=${encodeURIComponent(formData._subject)}&body=${encodeURIComponent(`Name: ${formData["Full Name"]}\nPhone: ${formData["Phone Number"]}\nEmail: ${formData.Email}\nService: ${formData.Service}\nBranch: ${formData["Location Branch"]}\nNotes: ${formData.Notes}`)}`;
         
         // Optional smooth trigger after toast
         setTimeout(() => {
