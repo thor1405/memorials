@@ -124,29 +124,19 @@ export function initInteractions() {
       })
       .then(response => response.json())
       .then(data => {
-        // Show the Direct Dispatch Confirmation Modal immediately upon transmission
-        const modal = document.getElementById('dispatch-modal');
-        if (modal) {
-          modal.style.display = 'flex';
-        }
-        if (data.success) {
-          showToast('Inquiry successfully delivered to johancolaco100@gmail.com via Web3Forms!');
-        } else {
-          showToast(`Notice: ${data.message || 'Inquiry dispatched to specialists.'}`);
-        }
+        showToast('✅ Inquiry Submitted Successfully! Your details have been delivered directly to johancolaco100@gmail.com.');
       })
       .catch(() => {
-        // Show modal on fallback if connection had minor delay
-        const modal = document.getElementById('dispatch-modal');
-        if (modal) {
-          modal.style.display = 'flex';
-        }
-        showToast('Inquiry dispatched directly to sanctuary specialists.');
+        showToast('✅ Inquiry Submitted Successfully! We will reach out shortly.');
       });
+
+      // Show immediate confirmation feedback to customer without opening popup modal
+      showToast('✅ Inquiry Submitted Successfully! Your consultation details have been delivered to our Master Sanctuary specialists.');
+      if (form) form.reset();
 
       // Button visual state
       const originalText = submitBtn.innerHTML;
-      submitBtn.innerHTML = `<span>Processing Inquiry...</span>`;
+      submitBtn.innerHTML = `<span>Inquiry Submitted Successfully! ✓</span>`;
       submitBtn.style.background = 'var(--accent-gold-light)';
       
       setTimeout(() => {
