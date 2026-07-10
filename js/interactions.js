@@ -25,7 +25,28 @@ export function initInteractions() {
       setTimeout(() => toast.remove(), 500);
     }, 6000);
   }
+  // Mobile Menu Hamburger Toggle Logic
+  const mobileToggleBtn = document.getElementById('mobile-menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  if (mobileToggleBtn && navLinks) {
+    mobileToggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navLinks.classList.toggle('mobile-open');
+    });
 
+    document.addEventListener('click', (e) => {
+      if (!navLinks.contains(e.target) && e.target !== mobileToggleBtn) {
+        navLinks.classList.remove('mobile-open');
+      }
+    });
+
+    const links = navLinks.querySelectorAll('a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('mobile-open');
+      });
+    });
+  }
   if (form && submitBtn) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
