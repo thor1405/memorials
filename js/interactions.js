@@ -270,11 +270,10 @@ export function initInteractions() {
       tier: "Tier 01 • Essential Care",
       title: "Haven of Serenity Package",
       subtitle: "Basic Plywood Coffin & Sacred Accessories",
-      desc: "A dignified basic package featuring a sturdy handcrafted plywood coffin, full sacred accessories, and professional church coordination for a respectful farewell.",
+      desc: "A dignified basic package featuring a sturdy handcrafted plywood coffin and full sacred accessories for a respectful farewell.",
       inclusions: [
         "<strong style='color: var(--text-primary);'>Basic Plywood Coffin:</strong> Handcrafted Goan plywood coffin with clean satin crepe interior to carry your loved one respectfully.",
         "<strong style='color: var(--text-primary);'>Common Sacred Accessories:</strong> Complete set including blessed rosary, crucifix cross, embroidered veil, and ceremonial hanky.",
-        "<strong style='color: var(--text-primary);'>Church & Cemetery Coordination:</strong> Full liaison assistance with parish clergy and cemetery officials to ensure a seamless ceremony.",
         "<strong style='color: var(--text-primary);'>24/7 Hotline Support:</strong> Immediate direct phone support (+91 9226577403) across Goa from Gomes Funeral Service."
       ],
       contactParam: "Haven of Serenity (Basic Plywood Coffin Tier)"
@@ -287,7 +286,6 @@ export function initInteractions() {
       inclusions: [
         "<strong style='color: var(--text-primary);'>Plywood + Wood Coffin:</strong> Reinforced Goan plywood body with solid hardwood corner structure, polished finish, and solid handles.",
         "<strong style='color: var(--text-primary);'>Common Sacred Accessories:</strong> Complete set including blessed rosary, crucifix cross, embroidered veil, and ceremonial hanky.",
-        "<strong style='color: var(--text-primary);'>Church & Cemetery Coordination:</strong> Complete parish clergy liaison and cemetery logistics coordination across Goa.",
         "<strong style='color: var(--text-primary);'>24/7 Hotline Support:</strong> Immediate direct phone support (+91 9226577403) across Goa from Gomes Funeral Service."
       ],
       contactParam: "Tribute of Respect (Plywood + Solid Wood Coffin Tier)"
@@ -300,7 +298,6 @@ export function initInteractions() {
       inclusions: [
         "<strong style='color: var(--text-primary);'>Wood + Veneer Coffin:</strong> Premium solid Goan hardwood coffin featuring an ultra-smooth polished wood veneer exterior and luxury satin lining.",
         "<strong style='color: var(--text-primary);'>Common Sacred Accessories:</strong> Complete set including blessed rosary, crucifix cross, embroidered veil, and ceremonial hanky.",
-        "<strong style='color: var(--text-primary);'>Church & Cemetery Coordination:</strong> Complete parish clergy liaison, liturgy assistance, and cemetery coordination across Goa.",
         "<strong style='color: var(--text-primary);'>24/7 Hotline Support:</strong> Immediate direct phone support (+91 9226577403) across Goa from Gomes Funeral Service."
       ],
       contactParam: "Everlasting Farewell (Solid Wood + Veneer Coffin Tier)"
