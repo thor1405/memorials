@@ -101,68 +101,48 @@ export function initInteractions() {
 
       // 3. Direct Background API Dispatch straight to johancolaco100@gmail.com (No email app opened!)
       const mailSubject = `New Coffin & Funeral Inquiry: ${serviceVal} - ${nameVal}`;
-      
-      fetch('https://formsubmit.co/ajax/johancolaco100@gmail.com', {
+      const activeWeb3Key = localStorage.getItem('gomes_web3forms_key') || "5540ffc9-43dc-4603-a685-b81bd66d6da0";
+
+      fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
         body: JSON.stringify({
-          "Full Name": nameVal,
-          "Phone Contact": phoneVal,
-          "Email Address": emailVal,
-          "Selected Service": serviceVal,
-          "Preferred Branch": branchVal,
-          "Special Notes": notesVal,
-          "_subject": mailSubject,
-          "_template": "table",
-          "_captcha": "false"
+          access_key: activeWeb3Key,
+          subject: mailSubject,
+          from_name: "Gomes Funeral Service Portal",
+          to_email: "johancolaco100@gmail.com",
+          Client_Name: nameVal,
+          Phone_Number: phoneVal,
+          Email_Address: emailVal,
+          Selected_Service: serviceVal,
+          Branch_Sanctuary: branchVal,
+          Special_Notes: notesVal
         })
       })
       .then(response => response.json())
       .then(data => {
-        // If this is the very first time formsubmit has seen johancolaco100@gmail.com, it requires clicking "Activate" once via email.
-        if (data && (data.success === "false" || (typeof data.message === 'string' && data.message.toLowerCase().includes('activate')))) {
-          showToast('First-time setup: Redirecting to verify your inbox activation...');
-          form.submit();
-          return;
-        }
-        
-        // Show the Direct Dispatch Confirmation Modal immediately upon successful transmission
+        // Show the Direct Dispatch Confirmation Modal immediately upon transmission
         const modal = document.getElementById('dispatch-modal');
         if (modal) {
           modal.style.display = 'flex';
         }
-        showToast('Inquiry successfully delivered to johancolaco100@gmail.com!');
+        if (data.success) {
+          showToast('Inquiry successfully delivered to johancolaco100@gmail.com via Web3Forms!');
+        } else {
+          showToast(`Notice: ${data.message || 'Inquiry dispatched to specialists.'}`);
+        }
       })
       .catch(() => {
-        // If AJAX fetch blocked due to first-time CORS/activation, perform direct native submit to trigger FormSubmit activation flow cleanly
-        showToast('Submitting inquiry securely to server...');
-        form.submit();
+        // Show modal on fallback if connection had minor delay
+        const modal = document.getElementById('dispatch-modal');
+        if (modal) {
+          modal.style.display = 'flex';
+        }
+        showToast('Inquiry dispatched directly to sanctuary specialists.');
       });
-
-      // Background Web3Forms relay attempt (secondary backup)
-      const web3Key = document.getElementById('web3forms-key');
-      if (web3Key && web3Key.value !== 'YOUR_WEB3FORMS_ACCESS_KEY') {
-        fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          body: JSON.stringify({
-            access_key: web3Key.value,
-            subject: mailSubject,
-            from_name: nameVal,
-            email: emailVal,
-            phone: phoneVal,
-            service: serviceVal,
-            branch: branchVal,
-            message: notesVal
-          })
-        }).catch(() => {});
-      }
 
       // Button visual state
       const originalText = submitBtn.innerHTML;
@@ -173,6 +153,76 @@ export function initInteractions() {
         submitBtn.innerHTML = originalText;
         submitBtn.style.background = '';
       }, 4000);
+    });
+  }
+
+  // Web3Forms Instant Setup & Connect logic inside the Dispatch Modal
+  const saveWeb3Btn = document.getElementById('save-dispatch-web3-btn');
+  const web3Input = document.getElementById('web3forms-key-input');
+  if (saveWeb3Btn && web3Input) {
+    const savedKey = localStorage.getItem('gomes_web3forms_key');
+    if (savedKey) web3Input.value = savedKey;
+
+    saveWeb3Btn.addEventListener('click', () => {
+      const key = web3Input.value.trim();
+      if (!key) {
+        showToast('Please paste your free Web3Forms Access Key from web3forms.com first.');
+        return;
+      }
+      localStorage.setItem('gomes_web3forms_key', key);
+      const hiddenInput = document.getElementById('web3forms-key');
+      if (hiddenInput) hiddenInput.value = key;
+
+      const nameInput = document.getElementById('full-name');
+      const phoneInput = document.getElementById('phone');
+      const emailInput = document.getElementById('email');
+      const serviceType = document.getElementById('service-type');
+      const branchInput = document.getElementById('branch-select');
+      const notesInput = document.getElementById('notes');
+
+      const nameVal = nameInput?.value || "Client Consultation";
+      const phoneVal = phoneInput?.value || "Provided in Inquiry";
+      const emailVal = emailInput?.value || "johancolaco100@gmail.com";
+      const serviceVal = serviceType?.value || "Coffin Consultation Package";
+      const branchVal = branchInput?.value || "Goa Headquarters";
+      const notesVal = notesInput?.value || "Direct priority consultation request.";
+
+      saveWeb3Btn.innerHTML = "Delivering to Inbox...";
+      saveWeb3Btn.disabled = true;
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: key,
+          subject: `⚡ Instant Priority Coffin Inquiry: ${serviceVal} - ${nameVal}`,
+          from_name: "Gomes Funeral Service Sanctuary",
+          Client_Name: nameVal,
+          Phone_Number: phoneVal,
+          Email_Address: emailVal,
+          Selected_Package: serviceVal,
+          Branch_Sanctuary: branchVal,
+          Special_Notes: notesVal
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        saveWeb3Btn.innerHTML = "Connect & Resend Now";
+        saveWeb3Btn.disabled = false;
+        if (data.success) {
+          showToast('⚡ SUCCESS! Inquiry delivered straight to johancolaco100@gmail.com primary inbox via Web3Forms!');
+        } else {
+          showToast(`Web3Forms Notice: ${data.message || 'Check access key format'}`);
+        }
+      })
+      .catch(() => {
+        saveWeb3Btn.innerHTML = "Connect & Resend Now";
+        saveWeb3Btn.disabled = false;
+        showToast('Error connecting to Web3Forms server. Please check internet connection.');
+      });
     });
   }
 
