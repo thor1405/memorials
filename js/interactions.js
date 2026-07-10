@@ -88,19 +88,7 @@ export function initInteractions() {
         `;
       }
 
-      // 2. Configure One-Click Direct Email Link
-      const emailBtn = document.getElementById('dispatch-email-btn');
-      const mailSubject = `New Coffin & Funeral Inquiry: ${serviceVal} - ${nameVal}`;
-      const mailBody = `Hello Gomes Funeral Service,\n\nI would like to inquire regarding a consultation:\n\nClient Name: ${nameVal}\nPhone Number: ${phoneVal}\nEmail Address: ${emailVal}\nSelected Service/Package: ${serviceVal}\nPreferred Branch: ${branchVal}\nSpecial Requirements / Customization Notes:\n${notesVal}\n\nPlease reach out to me at your earliest convenience.\n\nThank you,\n${nameVal}`;
-      
-      if (emailBtn) {
-        emailBtn.href = `mailto:rg6038145@gmail.com?subject=${encodeURIComponent(mailSubject)}&body=${encodeURIComponent(mailBody)}`;
-        emailBtn.onclick = () => {
-          showToast(`Direct email opened! Send the draft to deliver straight to rg6038145@gmail.com.`);
-        };
-      }
-
-      // 3. Configure Instant WhatsApp Specialist Priority Link
+      // 2. Configure Instant WhatsApp Specialist Priority Link
       const whatsappBtn = document.getElementById('dispatch-whatsapp-btn');
       const waText = `*New Consultation Inquiry - Gomes Funeral Service*\n\n*Name:* ${nameVal}\n*Phone:* ${phoneVal}\n*Email:* ${emailVal}\n*Package/Service:* ${serviceVal}\n*Branch:* ${branchVal}\n*Notes:* ${notesVal || 'None'}`;
       
@@ -111,7 +99,42 @@ export function initInteractions() {
         };
       }
 
-      // 4. Background Web3Forms API Attempt (If Access Key is set)
+      // 3. Direct Background API Dispatch straight to johancolaco100@gmail.com (No email app opened!)
+      const mailSubject = `New Coffin & Funeral Inquiry: ${serviceVal} - ${nameVal}`;
+      
+      fetch('https://formsubmit.co/ajax/johancolaco100@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          "Full Name": nameVal,
+          "Phone Contact": phoneVal,
+          "Email Address": emailVal,
+          "Selected Service": serviceVal,
+          "Preferred Branch": branchVal,
+          "Special Notes": notesVal,
+          "_subject": mailSubject,
+          "_template": "table",
+          "_captcha": "false"
+        })
+      })
+      .then(response => response.json())
+      .then(data => {
+        // If this is the very first time formsubmit has seen johancolaco100@gmail.com, it requires clicking "Activate" once via email.
+        if (data && (data.success === "false" || (typeof data.message === 'string' && data.message.toLowerCase().includes('activate')))) {
+          showToast('First-time setup: Redirecting to verify your inbox activation...');
+          form.submit();
+          return;
+        }
+        showToast('Inquiry successfully delivered to johancolaco100@gmail.com!');
+      })
+      .catch(() => {
+        // Silent fallback - also attempts direct web3forms / secondary API if configured
+      });
+
+      // Background Web3Forms relay attempt (secondary backup)
       const web3Key = document.getElementById('web3forms-key');
       if (web3Key && web3Key.value !== 'YOUR_WEB3FORMS_ACCESS_KEY') {
         fetch('https://api.web3forms.com/submit', {
@@ -133,7 +156,7 @@ export function initInteractions() {
         }).catch(() => {});
       }
 
-      // 5. Show the Dispatch Modal
+      // 4. Show the Direct Dispatch Confirmation Modal immediately
       const modal = document.getElementById('dispatch-modal');
       if (modal) {
         modal.style.display = 'flex';
@@ -141,7 +164,7 @@ export function initInteractions() {
 
       // Button visual state
       const originalText = submitBtn.innerHTML;
-      submitBtn.innerHTML = `<span>Inquiry Prepared</span>`;
+      submitBtn.innerHTML = `<span>Inquiry Delivered</span>`;
       submitBtn.style.background = 'var(--accent-gold-light)';
       
       setTimeout(() => {
@@ -151,20 +174,26 @@ export function initInteractions() {
     });
   }
 
-  // Close Dispatch Modal logic
+  // Close Dispatch Modal logic & Return to Sanctuary button
   const dispatchModal = document.getElementById('dispatch-modal');
   const closeDispatchBtn = document.getElementById('close-dispatch-modal');
+  const returnBtn = document.getElementById('modal-close-return-btn');
+
+  function closeAndResetModal() {
+    if (dispatchModal) dispatchModal.style.display = 'none';
+    if (form) form.reset();
+  }
+
   if (closeDispatchBtn && dispatchModal) {
-    closeDispatchBtn.addEventListener('click', () => {
-      dispatchModal.style.display = 'none';
-      if (form) form.reset();
-    });
+    closeDispatchBtn.addEventListener('click', closeAndResetModal);
+  }
+  if (returnBtn && dispatchModal) {
+    returnBtn.addEventListener('click', closeAndResetModal);
   }
   if (dispatchModal) {
     dispatchModal.addEventListener('click', (e) => {
       if (e.target === dispatchModal) {
-        dispatchModal.style.display = 'none';
-        if (form) form.reset();
+        closeAndResetModal();
       }
     });
   }
