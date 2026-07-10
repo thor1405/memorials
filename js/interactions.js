@@ -128,10 +128,18 @@ export function initInteractions() {
           form.submit();
           return;
         }
+        
+        // Show the Direct Dispatch Confirmation Modal immediately upon successful transmission
+        const modal = document.getElementById('dispatch-modal');
+        if (modal) {
+          modal.style.display = 'flex';
+        }
         showToast('Inquiry successfully delivered to johancolaco100@gmail.com!');
       })
       .catch(() => {
-        // Silent fallback - also attempts direct web3forms / secondary API if configured
+        // If AJAX fetch blocked due to first-time CORS/activation, perform direct native submit to trigger FormSubmit activation flow cleanly
+        showToast('Submitting inquiry securely to server...');
+        form.submit();
       });
 
       // Background Web3Forms relay attempt (secondary backup)
@@ -156,15 +164,9 @@ export function initInteractions() {
         }).catch(() => {});
       }
 
-      // 4. Show the Direct Dispatch Confirmation Modal immediately
-      const modal = document.getElementById('dispatch-modal');
-      if (modal) {
-        modal.style.display = 'flex';
-      }
-
       // Button visual state
       const originalText = submitBtn.innerHTML;
-      submitBtn.innerHTML = `<span>Inquiry Delivered</span>`;
+      submitBtn.innerHTML = `<span>Processing Inquiry...</span>`;
       submitBtn.style.background = 'var(--accent-gold-light)';
       
       setTimeout(() => {
