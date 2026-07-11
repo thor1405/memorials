@@ -20,7 +20,7 @@ html {
   overflow-y: scroll !important; /* Force vertical scrollbar/sidebar to be visible on ALL pages */
   overflow-x: hidden;
   scrollbar-width: thin;
-  scrollbar-color: #f3e5ab var(--bg-primary);
+  scrollbar-color: #ac8826 var(--bg-primary);
 }
 
 body {
@@ -47,14 +47,14 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #f3e5ab; /* Light Yellow */
+  background: #ac8826; /* Exact Golden Mustard from user image */
   border-radius: 6px;
-  border: 1px solid rgba(255, 230, 100, 0.4);
-  box-shadow: 0 0 8px rgba(243, 229, 171, 0.4);
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.3);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ffe600; /* Bright Yellow */
+  background: #ffe600; /* Bright Yellow on hover */
   border-color: #ffffff;
   box-shadow: 0 0 15px rgba(255, 230, 0, 0.85);
 }
