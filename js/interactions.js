@@ -327,6 +327,9 @@ export function initInteractions() {
         }
         pkgModal.classList.add('show');
         pkgModal.classList.add('active');
+        if (window.lenis) window.lenis.stop();
+        document.documentElement.classList.add('modal-open');
+        document.body.classList.add('modal-open');
       }
     });
   });
@@ -335,6 +338,9 @@ export function initInteractions() {
     if (pkgModal) {
       pkgModal.classList.remove('show');
       pkgModal.classList.remove('active');
+      if (window.lenis) window.lenis.start();
+      document.documentElement.classList.remove('modal-open');
+      document.body.classList.remove('modal-open');
     }
   };
 

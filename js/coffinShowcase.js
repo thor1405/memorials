@@ -163,6 +163,11 @@ export function initCoffinShowcase() {
         modal.classList.add('active');
         update3DStage(0, 1.05);
 
+        // Lock background screen scrolling and pause Lenis
+        if (window.lenis) window.lenis.stop();
+        document.documentElement.classList.add('modal-open');
+        document.body.classList.add('modal-open');
+
         // Reset to first hotspot tab by default
         if (hotspotTabs.length > 0) {
           hotspotTabs.forEach((t) => t.classList.remove('active'));
@@ -179,6 +184,11 @@ export function initCoffinShowcase() {
     if (modal) {
       modal.classList.remove('show');
       modal.classList.remove('active');
+
+      // Unlock background screen scrolling and resume Lenis
+      if (window.lenis) window.lenis.start();
+      document.documentElement.classList.remove('modal-open');
+      document.body.classList.remove('modal-open');
     }
   };
 

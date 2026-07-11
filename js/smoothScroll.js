@@ -31,5 +31,6 @@ export function initSmoothScroll() {
 
   gsap.ticker.lagSmoothing(0);
 
+  window.lenis = lenis;
   return lenis;
 }
