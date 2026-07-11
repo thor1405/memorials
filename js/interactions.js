@@ -99,9 +99,9 @@ export function initInteractions() {
         };
       }
 
-      // 3. Direct Background API Dispatch straight to johancolaco100@gmail.com (No email app opened!)
+      // 3. Direct Background API Dispatch straight to rg6038145@gmail.com (No email app opened!)
       const mailSubject = `New Coffin & Funeral Inquiry: ${serviceVal} - ${nameVal}`;
-      const activeWeb3Key = localStorage.getItem('gomes_web3forms_key') || "5540ffc9-43dc-4603-a685-b81bd66d6da0";
+      const activeWeb3Key = localStorage.getItem('gomes_web3forms_key') || "88fa0cba-eab9-4987-a7d4-05cffa86e212";
 
       fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -113,7 +113,7 @@ export function initInteractions() {
           access_key: activeWeb3Key,
           subject: mailSubject,
           from_name: "Gomes Funeral Service Portal",
-          to_email: "johancolaco100@gmail.com",
+          to_email: "rg6038145@gmail.com",
           Client_Name: nameVal,
           Phone_Number: phoneVal,
           Email_Address: emailVal,
@@ -124,7 +124,7 @@ export function initInteractions() {
       })
       .then(response => response.json())
       .then(data => {
-        showToast('✅ Inquiry Submitted Successfully! Your details have been delivered directly to johancolaco100@gmail.com.');
+        showToast('✅ Inquiry Submitted Successfully! Your details have been delivered directly to rg6038145@gmail.com.');
       })
       .catch(() => {
         showToast('✅ Inquiry Submitted Successfully! We will reach out shortly.');
@@ -172,7 +172,7 @@ export function initInteractions() {
 
       const nameVal = nameInput?.value || "Client Consultation";
       const phoneVal = phoneInput?.value || "Provided in Inquiry";
-      const emailVal = emailInput?.value || "johancolaco100@gmail.com";
+      const emailVal = emailInput?.value || "rg6038145@gmail.com";
       const serviceVal = serviceType?.value || "Coffin Consultation Package";
       const branchVal = branchInput?.value || "Goa Headquarters";
       const notesVal = notesInput?.value || "Direct priority consultation request.";
@@ -203,7 +203,7 @@ export function initInteractions() {
         saveWeb3Btn.innerHTML = "Connect & Resend Now";
         saveWeb3Btn.disabled = false;
         if (data.success) {
-          showToast('⚡ SUCCESS! Inquiry delivered straight to johancolaco100@gmail.com primary inbox via Web3Forms!');
+          showToast('⚡ SUCCESS! Inquiry delivered straight to rg6038145@gmail.com primary inbox via Web3Forms!');
         } else {
           showToast(`Web3Forms Notice: ${data.message || 'Check access key format'}`);
         }
